@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'PI_WEB.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sistemaAapice',
+        'NAME': 'sistemaApice',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
