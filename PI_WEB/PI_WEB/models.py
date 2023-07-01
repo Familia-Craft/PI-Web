@@ -4,6 +4,7 @@ class Ferramenta(models.Model):
     nome = models.CharField(max_length=40)
     descricao = models.TextField()
     tipo = models.CharField(max_length=10)
+    imagem = models.ImageField(height_field=None, width_field=None, max_length=None)
 
 class Usuario(models.Model):
     ra = models.CharField(max_length=15, primary_key=True)
