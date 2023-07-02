@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center bg-success w-100 border rounded-5 vh-100">
+    <h1>Seja Bem-vindo(a)</h1>
+    <div class="p-4 mt-5 row border rounded-5 shadow" style="background-color: #2c462c;">
+        <div class="text-center"><i class="fa-solid fa-screwdriver-wrench fa-2xl mx-auto" style="color: #dedede;"></i></div>
+        <form method="POST" class="h-mc mt-3">
+            {% csrf_token %} 
+            <div class="mt-4 form-group">
+    
+                <div class="input-group input-group-lg">
+                    <i class="input-group-text fa-solid fa-user"></i>
+                    <div class="form-floating">
+                        
+                        {% render_field form.ra class="form-control bg-light" placeholder="RA"%}
+                        <label for='ra'>RA</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 form-group">
+                <div class="input-group input-group-lg">
+                    <i class="input-group-text fa-solid fa-lock "></i>
+                    <div class="form-floating">
+                        
+                        {% render_field form.senha class="form-control bg-light" placeholder="Senha"%}
+                        <label for='senha'>Senha</label>
+                    </div>
+                </div>
+            </div>    
+            <div class="text-white"> 
+                <small><a class='text-end' href="#">Esqueceu a senha?</a></small>
+            </div>                 
+            <button class="mt-3 btn btn-success w-100" type="submit">Entrar</button>
+            <div class="text-white">
+                <small>Não possui um login? <a href="{% url 'cadastro-page' %}">Cadastre aqui</a></small>
+            </div>
+            {{ frm.errors}}
+    </div>
+
+</div>
+{% endblock %}1
