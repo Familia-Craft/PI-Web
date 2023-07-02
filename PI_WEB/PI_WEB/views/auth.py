@@ -5,14 +5,14 @@ from django.contrib import auth
 
 
 def login(request: HttpRequest):
+    if request.user.is_authenticated:
+        return redirect('home-page')
+
     frm = LoginForm(request.POST or None)
     if frm.is_valid():
-        auth.logout(request)
         servidor = auth.authenticate(request, ra=frm.cleaned_data['ra'], password=frm.cleaned_data['senha'])
-        print(frm.cleaned_data)
-        print(servidor)
         if servidor is not None:
-            print("deu bom")
+
             auth.login(request, servidor)
             return redirect('home-page')
         else:
@@ -22,6 +22,9 @@ def login(request: HttpRequest):
     return render(request, "login.html", context)
 
 def cadastro(request: HttpRequest):
+    if request.user.is_authenticated:
+        return redirect('home-page')
+    
     frm = ServidorForm(request.POST or None)
     
     if frm.is_valid():
