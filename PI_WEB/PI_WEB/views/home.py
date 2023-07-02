@@ -5,4 +5,3 @@ from django.http import HttpRequest
 @login_required
 def home(request: HttpRequest):
     return render(request, "home.html")
-
