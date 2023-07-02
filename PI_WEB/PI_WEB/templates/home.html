@@ -1,41 +1,93 @@
-{% extends 'index.html' %}
+<!doctype html>
+<html lang="en">
 
-{% block content %}
-<div class="container mt-3 fs-4 fw-semibold">Seus serviços</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ápice</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-<!-- Cardoes de seus empréstimos -->
-<div class="container d-flex">
-  <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-    <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-    <div class="card-body">
-      <p class="card-text">Mulher tirando uma foto para exemplo</p>
+<body>
+  <nav class="navbar navbar-expand-md" style="background-color: #2c462c;">
+    <div class="container">
+      <a class="navbar-brand">
+        <i class="fa-solid fa-house fa-xl" style="color: #dedede;"></i> <!-- Icone home -->
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
+              Categorias
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Impressora 3D</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="#" style="color: white;">Empréstimo</a>
+          </li>
+        </ul>
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Pesquisar Ferramenta" aria-label="Search">
+          <button class="btn btn-outline-success" type="button" id="button-addon2">Pesquisar</button>
+        </form>
+        <a class="navbar-brand ms-2">
+          <i class="fa-sharp fa-solid fa-gear fa-xl" style="color: #dedede;"></i> <!-- Icone configuracoes -->
+        </a>
+
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-3 fs-4 fw-semibold">Seus serviços</div>
+
+  <!-- Cardoes de seus empréstimos -->
+  <div class="container d-flex">
+    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
+      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
+      <div class="card-body">
+        <p class="card-text">Mulher tirando uma foto para exemplo</p>
+      </div>
+    </div>
+    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
+      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
+      <div class="card-body">
+        <p class="card-text">Mulher tirando uma foto para exemplo 2</p>
+      </div>
     </div>
   </div>
-  <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-    <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-    <div class="card-body">
-      <p class="card-text">Mulher tirando uma foto para exemplo 2</p>
+
+  <div class="container mt-2 fs-4 fw-semibold">Talvez se interesse</div>
+
+  <!-- Cardoes sugestões -->
+
+  <div class="container d-flex">
+    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
+      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
+      <div class="card-body">
+        <p class="card-text">Mulher tirando uma foto para exemplo 3</p>
+      </div>
+    </div>
+    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
+      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
+      <div class="card-body">
+        <p class="card-text">Mulher tirando uma foto para exemplo 4</p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container mt-2 fs-4 fw-semibold">Talvez se interesse</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
 
-<!-- Cardoes sugestões -->
-
-<div class="container d-flex">
-  <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-    <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-    <div class="card-body">
-      <p class="card-text">Mulher tirando uma foto para exemplo 3</p>
-    </div>
-  </div>
-  <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-    <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-    <div class="card-body">
-      <p class="card-text">Mulher tirando uma foto para exemplo 4</p>
-    </div>
-  </div>
-</div>
-
-{% endblock %}
+</html>
