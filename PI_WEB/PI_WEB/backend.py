@@ -8,7 +8,6 @@ class ServidorBackend(BaseBackend):
         try:
             servidor = Servidor.objects.get(pk=kwargs['ra'])
             if kwargs['password'] == servidor.password:
-                print("senha certa")
                 return servidor
         except:
             pass

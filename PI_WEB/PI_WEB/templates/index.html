@@ -14,7 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body style="{%block style_body %}{% endblock %}">
   <nav class="navbar navbar-expand-md" style="background-color: #2c462c;">
     <div class="container">
       <a class="navbar-brand" href="{% url 'home-page' %}">
@@ -38,12 +38,15 @@
         </ul>
 
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Pesquisar Ferramenta" aria-label="Search">
-          <button class="btn btn-outline-success" type="button" id="button-addon2">Pesquisar</button>
+          <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+          <button class="btn btn-outline-success text-white" type="button" id="button-addon2">Pesquisar</button>
         </form>
-        <a class="navbar-brand ms-2">
-          <i class="fa-sharp fa-solid fa-gear fa-xl" style="color: #dedede;"></i> <!-- Icone configuracoes -->
-        </a>
+        <div class="dropdown">
+          <i class="fa-sharp fa-solid fa-gear fa-xl navbar-brand ms-2 dropdown-toggle " data-bs-toggle="dropdown" style="color: #dedede;"></i> <!-- Icone configuracoes -->
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'logout-page'%}">Sair <i class="fa-solid fa-right-from-bracket fa-lg" style="color: #bac0c9;"></i></a></li>
+          </ul>
+        </div>
 
       </div>
     </div>
