@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from PI_WEB.views import home, auth
+from django.conf import settings
+from django.conf.urls.static import static
+from PI_WEB.views import home, auth, actions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +25,6 @@ urlpatterns = [
     path('login', auth.login, name='login-page'),
     path('cadastrar', auth.cadastro, name='cadastro-page'),
     path('logout', auth.deslogar, name='logout-page'),
-]
+    path('ferramenta/<id>', actions.ferramenta, name='ferramenta-page'),
+    path('cadastrar_ferramenta', actions.cadastrar_ferramenta, name='cadastrar_ferramenta-page')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

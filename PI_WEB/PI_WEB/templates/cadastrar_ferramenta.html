@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load widget_tweaks%}
+
+{% block content %}
+
+<div class="container">
+    <div class="badge bg-primary">Cadastro de Ferramenta</div>
+    <form method="POST">
+        {% csrf_token %} 
+        <div class="mt-4 form-group">
+
+            <div class="input-group input-group-lg">
+                <i class="input-group-text fa-solid fa-user"></i>
+                <div class="form-floating">
+                    
+                    {% render_field form.nome class="form-control bg-light" placeholder="Nome"%}
+                    <label for='nome'>Nome</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 form-group">
+
+            <div class="input-group input-group-lg">
+                <i class="input-group-text fa-solid fa-user"></i>
+                <div class="form-floating">
+                    
+                    {% render_field form.descricao class="form-control bg-light" placeholder="Descrição"%}
+                    <label for='descricao'>Descrição</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 form-group">
+
+            <div class="input-group input-group-lg">
+                <i class="input-group-text fa-solid fa-user"></i>
+                <div class="form-floating">
+                    
+                    {% render_field form.tipo class="form-control bg-light" placeholder="Tipo"%}
+                    <label for='tipo'>Tipo</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 form-group">
+
+            <div class="input-group input-group-lg">
+                <i class="input-group-text fa-solid fa-user"></i>
+                <div class="form-floating">
+                    
+                    {% render_field form.imagem class="form-control bg-light" placeholder="Imagem"%}
+                    <label for='imagem'>Imagem</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

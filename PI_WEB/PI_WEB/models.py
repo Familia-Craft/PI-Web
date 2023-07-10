@@ -5,7 +5,7 @@ class Ferramenta(models.Model):
     nome = models.CharField(max_length=40)
     descricao = models.TextField()
     tipo = models.CharField(max_length=10)
-    imagem = models.FileField()
+    imagem = models.ImageField(upload_to='imagens_ferramentas', default='default.png')
 
 class Usuario(models.Model):
     ra = models.CharField(max_length=15, primary_key=True)

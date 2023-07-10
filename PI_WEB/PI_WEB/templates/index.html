@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -15,13 +17,21 @@
 </head>
 
 <body style="{%block style_body %}{% endblock %}">
+
+  <!-- Começo da Nav Bar -->
+
   <nav class="navbar navbar-expand-md" style="background-color: #2c462c;">
+
     <div class="container">
+
       <a class="navbar-brand" href="{% url 'home-page' %}">
         <i class="fa-solid fa-house fa-xl" style="color: #dedede;"></i> <!-- Icone home -->
       </a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Lista de Links Clicáveis -->
+
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li class="nav-item dropdown">
@@ -36,21 +46,30 @@
             <a class="nav-link fw-semibold" href="#" style="color: white;">Empréstimo</a>
           </li>
         </ul>
+        
+        <!-- Fim Lista de Links Clicáveis -->
 
+        <!-- Fomulário de Pesquisa -->
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
           <button class="btn btn-outline-success text-white" type="button" id="button-addon2">Pesquisar</button>
         </form>
-        <div class="dropdown">
-          <i class="fa-sharp fa-solid fa-gear fa-xl navbar-brand ms-2 dropdown-toggle " data-bs-toggle="dropdown" style="color: #dedede;"></i> <!-- Icone configuracoes -->
+        <!-- Fim Fomulário de Pesquisa -->
+        
+        <!-- Botão Configurações-->
+        <div class="dropdown" style="{%if request.user.is_authenticated %}{{ ''}} {% else %} {{'display: none;'}} {% endif %}">
+          <i class="fa-sharp fa-solid fa-gear fa-xl navbar-brand ms-2" data-bs-toggle="dropdown" style="color: #dedede;"></i> <!-- Icone configuracoes -->
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'logout-page'%}">Sair <i class="fa-solid fa-right-from-bracket fa-lg" style="color: #bac0c9;"></i></a></li>
           </ul>
         </div>
+        <!-- Fim Botão Configurações -->
 
       </div>
     </div>
   </nav>
+
+  <!-- Final da Nav Bar -->
   {% block content %}
   {% endblock %}
 

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from PI_WEB.models import Servidor
+from PI_WEB.models import Servidor, Ferramenta
 from django.db import models
 from django import forms 
 from django.contrib.auth.hashers import make_password
@@ -17,6 +17,14 @@ class ServidorForm(ModelForm):
             'password': forms.PasswordInput()
         }
     
+class FerramentaForm(ModelForm):
+    class Meta:
+        model = Ferramenta
+        fields = '__all__'
+        widgets = {
+            'descricao': forms.Textarea()
+        }
+
 
 
 

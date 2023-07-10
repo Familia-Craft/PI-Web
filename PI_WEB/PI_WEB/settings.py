@@ -11,13 +11,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+# custom imports
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+# See \
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-*lyr_cozk-ir&)c_d-xy*=!#d9e-2f#9dxb75@zdxouq!m@o*2'
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'PI_WEB',
     'widget_tweaks',
-    'django_extensions',
+    #'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +130,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Media urls and folder config
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 AUTH_MODEL = 'PI_WEB.Servidor'
 AUTHENTICATION_BACKENDS = ['PI_WEB.backend.ServidorBackend',]
