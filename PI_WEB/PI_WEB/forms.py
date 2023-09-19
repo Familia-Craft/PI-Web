@@ -10,12 +10,10 @@ class LoginForm(forms.Form):
 
 
 class ServidorForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = Servidor
-        fields = '__all__'
-        widgets = {
-            'password': forms.PasswordInput()
-        }
+        fields = ['ra', 'nome', 'funcao']
     
 class FerramentaForm(ModelForm):
     class Meta:

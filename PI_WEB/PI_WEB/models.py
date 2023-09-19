@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import User
 
 class Ferramenta(models.Model):
     nome = models.CharField(max_length=40)
@@ -11,11 +11,11 @@ class Usuario(models.Model):
     ra = models.CharField(max_length=15, primary_key=True)
     nome = models.CharField(max_length=40)
     emprestimos = models.ManyToManyField('Reserva', through='Emprestimo', through_fields=('usuario', 'reserva'), blank=True)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name='usuario')
 
-class Servidor(Usuario, AbstractBaseUser):
+class Servidor(Usuario):
     funcao = models.CharField(max_length=1, choices=(("P", "Profesosr"),("B", "Bolsista")), null=False)
     ferramentas_reservadas = models.ManyToManyField(Ferramenta, through='Reserva', blank=True)
-    USERNAME_FIELD = 'ra'
 
 class Aluno(Usuario):
     curso = models.CharField(max_length=7)

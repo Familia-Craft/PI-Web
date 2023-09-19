@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from PI_WEB.forms import LoginForm, ServidorForm
 from django.http import HttpRequest
 from django.contrib import auth
+from django.contrib.auth.models import User
 
 
 def login(request: HttpRequest):
@@ -10,13 +11,10 @@ def login(request: HttpRequest):
 
     frm = LoginForm(request.POST or None)
     if frm.is_valid():
-        servidor = auth.authenticate(request, ra=frm.cleaned_data['ra'], password=frm.cleaned_data['senha'])
-        if servidor is not None:
+        user = User.objects.get(pk=frm.cleaned_data['ra'])
+        auth.login(request, user)
+        return redirect('home-page')
 
-            auth.login(request, servidor)
-            return redirect('home-page')
-        else:
-            frm.add_error(None, 'Usuário ou senha inválidos')
 
     context = {'form': frm}
     return render(request, "login.html", context)
@@ -28,8 +26,10 @@ def cadastro(request: HttpRequest):
     frm = ServidorForm(request.POST or None)
     
     if frm.is_valid():
+        dados = frm.cleaned_data
+        user = User.objects.create_user(username=dados['ra'], password=dados['password'])
         servidor = frm.save()
-        auth.login(request, servidor)
+        auth.login(request, user)
         redirect("home-page")
 
     context = {'form': frm}

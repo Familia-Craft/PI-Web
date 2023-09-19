@@ -20,3 +20,4 @@ insert into Ferramenta values ('Furadeira de impacto profissional Bosch', 'pergi
 
 
 
+create database sistemaApice;
