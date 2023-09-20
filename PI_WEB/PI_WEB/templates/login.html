@@ -17,7 +17,7 @@ background-color: #ccffcf
                     <i class="input-group-text fa-solid fa-user"></i>
                     <div class="form-floating">
                         
-                        {% render_field form.ra class="form-control bg-light" placeholder="RA"%}
+                        {% render_field form.username class="form-control bg-light" placeholder="RA"%}
                         <label for='ra'>RA</label>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ background-color: #ccffcf
                     <i class="input-group-text fa-solid fa-lock "></i>
                     <div class="form-floating">
                         
-                        {% render_field form.senha class="form-control bg-light" placeholder="Senha"%}
+                        {% render_field form.password class="form-control bg-light" placeholder="Senha"%}
                         <label for='senha'>Senha</label>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ background-color: #ccffcf
             <div class="text-white">
                 <small>Não possui um login? <a href="{% url 'cadastro-page' %}">Cadastre aqui</a></small>
             </div>
-            {{ frm.errors}}
+            {{ form.errors}}
     </div>
 
 </div>

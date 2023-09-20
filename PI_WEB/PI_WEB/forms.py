@@ -1,19 +1,18 @@
 from django.forms import ModelForm
 from PI_WEB.models import Servidor, Ferramenta
-from django.db import models
 from django import forms 
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 
-class LoginForm(forms.Form):
-    ra = forms.CharField(max_length=15)
-    senha = forms.CharField(widget=forms.PasswordInput)
+class LoginForm(AuthenticationForm):
+    username = UsernameField(widget=forms.TextInput(attrs={"autofocus": True}), max_length=15)
 
 
 class ServidorForm(ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = Servidor
-        fields = ['ra', 'nome', 'funcao']
+        fields = ['ra', 'nome', 'funcao', 'user']
+
     
 class FerramentaForm(ModelForm):
     class Meta:

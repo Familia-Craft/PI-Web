@@ -136,6 +136,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-AUTH_MODEL = 'PI_WEB.Servidor'
-AUTHENTICATION_BACKENDS = ['PI_WEB.backend.ServidorBackend',]
 LOGIN_URL = "/login"

@@ -11,7 +11,7 @@ class Usuario(models.Model):
     ra = models.CharField(max_length=15, primary_key=True)
     nome = models.CharField(max_length=40)
     emprestimos = models.ManyToManyField('Reserva', through='Emprestimo', through_fields=('usuario', 'reserva'), blank=True)
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name='usuario')
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='usuario')
 
 class Servidor(Usuario):
     funcao = models.CharField(max_length=1, choices=(("P", "Profesosr"),("B", "Bolsista")), null=False)
