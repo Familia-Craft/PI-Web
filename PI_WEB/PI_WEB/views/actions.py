@@ -14,15 +14,12 @@ def ferramenta(request: HttpRequest, id: int):
 @login_required
 def cadastrar_ferramenta(request: HttpRequest):
     frm = FerramentaForm(request.POST or None)
-    frm.fields
     if frm.is_valid():
         frm.save()
-        redirect('home-page')
+        return redirect('home-page')
 
     context = {'form': frm}
     return render(request, 'cadastrar_ferramenta.html', context)
-
-
     
 
 
