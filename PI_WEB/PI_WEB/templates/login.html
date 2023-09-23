@@ -1,20 +1,20 @@
 {% extends 'index.html' %}
 {% load widget_tweaks %}
 {% block style_body %}
-background-color: #ccffcf
+background-color: #ffffff
 {%endblock%}
 {% block content %}
 
-<div class="container d-flex flex-column justify-content-center align-items-center w-100 vh-100">
-    <h1>Seja Bem-vindo(a) de volta!</h1>
-    <div class="p-4 mt-5 row border rounded-5 shadow" style="background-color: #2c462c;">
-        <div class="text-center"><i class="fa-solid fa-screwdriver-wrench fa-2xl mx-auto" style="color: #dedede;"></i></div>
+<div class="h-100 d-flex justify-content-center align-items-center vh-100">
+    <div class="p-4 border rounded-3 shadow w-25" style="background-color: #2c462c;">
+        <div class="text-center"><i class="fa-solid fa-screwdriver-wrench fa-2xl" style="color: #ffffff;background-color:ff0000"></i><p class='fs-4' style='color:#ffffff'>LOGIN</p></div>
         <form method="POST" class="h-mc mt-3">
             {% csrf_token %} 
-            <div class="mt-4 form-group">
+            <div class="mt-2 form-group">
     
                 <div class="input-group input-group-lg">
-                    <i class="input-group-text fa-solid fa-user"></i>
+                    <span class="input-group-text" id="basic-addon1"><i class=" fa-solid fa-user"></i></span>
+                    
                     <div class="form-floating">
                         
                         {% render_field form.username class="form-control bg-light" placeholder="RA"%}
@@ -22,24 +22,25 @@ background-color: #ccffcf
                     </div>
                 </div>
             </div>
+            <div class='text-white'>{% if form.errors.username %}{{'<small><p>Campo obrigatorio</p></small>'}}{% endif %}</div>
             <div class="mt-4 form-group">
                 <div class="input-group input-group-lg">
-                    <i class="input-group-text fa-solid fa-lock "></i>
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
                     <div class="form-floating">
                         
                         {% render_field form.password class="form-control bg-light" placeholder="Senha"%}
                         <label for='senha'>Senha</label>
                     </div>
                 </div>
-            </div>    
-            <div class="text-white"> 
-                <small><a class='text-end' href="#">Esqueceu a senha?</a></small>
-            </div>                 
-            <button class="mt-3 btn btn-success w-100" type="submit">Entrar</button>
+            </div> 
+            <div class='text-white'>{% if form.errors.username %}{{'<small><p>Campo obrigatorio</p></small>'}}{% endif %}</div>                  
+            <button class="btn btn-success w-100" type="submit">Entrar</button>
             <div class="text-white">
-                <small>Não possui um login? <a href="{% url 'cadastro-page' %}">Cadastre aqui</a></small>
+                <small>Não possui um login? <a href="{% url 'cadastro-page' %}" class='text-success' style='text-decoration: none'>Cadastre aqui</a></small>
             </div>
-            {{ form.errors}}
+            <div class="text-white"> 
+                <small><a class='text-end text-white' style='text-decoration: none' href="#">Esqueceu a senha?</a></small>
+            </div>  
     </div>
 
 </div>
