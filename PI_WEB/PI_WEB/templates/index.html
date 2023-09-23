@@ -42,9 +42,13 @@
               <li><a class="dropdown-item" href="#">Impressora 3D</a></li>
             </ul>
           </li>
+          {%if request.user.is_authenticated %}{{ '
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="#" style="color: white;">Empréstimo</a>
           </li>
+          '}}
+          {% endif %}
+          
         </ul>
         
         <!-- Fim Lista de Links Clicáveis -->
