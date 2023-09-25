@@ -14,7 +14,7 @@ class Usuario(models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='usuario')
 
 class Servidor(Usuario):
-    funcao = models.CharField(max_length=1, choices=(("P", "Profesosr"),("B", "Bolsista")), null=False)
+    funcao = models.CharField(max_length=1, choices=(("P", "Professor"),("B", "Bolsista")), null=False)
     ferramentas_reservadas = models.ManyToManyField(Ferramenta, through='Reserva', blank=True)
 
 class Aluno(Usuario):

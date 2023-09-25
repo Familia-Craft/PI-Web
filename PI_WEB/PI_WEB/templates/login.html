@@ -22,7 +22,7 @@ background-color: #ffffff
                     </div>
                 </div>
             </div>
-            <div class='text-white'>{% if form.errors.username %}{{'<small><p>Campo obrigatorio</p></small>'}}{% endif %}</div>
+            <div class='text-white'>{% if form.username.errors %}<small style="color: red;"><p>{{form.username.errors.0}}</p></small>{% endif %}</div>
             <div class="mt-4 form-group">
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
@@ -33,7 +33,7 @@ background-color: #ffffff
                     </div>
                 </div>
             </div> 
-            <div class='text-white'>{% if form.errors.username %}{{'<small><p>Campo obrigatorio</p></small>'}}{% endif %}</div>                  
+            <div class='text-white'>{% if form.password.errors %}<small style="color: red;"><p>{{form.password.errors.0}}</p></small>{% endif %}</div>                  
             <button class="btn btn-success w-100" type="submit">Entrar</button>
             <div class="text-white">
                 <small>Não possui um login? <a href="{% url 'cadastro-page' %}" class='text-success' style='text-decoration: none'>Cadastre aqui</a></small>

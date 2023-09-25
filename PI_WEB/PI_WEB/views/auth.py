@@ -13,7 +13,7 @@ def login(request: HttpRequest):
     frm = LoginForm(request, data=request.POST)
     if frm.is_valid():
         auth.login(request, frm.get_user())
-        return redirect('home-page')
+        return redirect(request.GET.get('next', 'home-page'))
 
     print(frm.errors)
     context = {'form': frm}
