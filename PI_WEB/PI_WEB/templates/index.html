@@ -60,6 +60,7 @@
         <div class="dropdown" style="{%if request.user.is_authenticated %}{{ ''}} {% else %} {{'display: none;'}} {% endif %}">
           <i class="fa-sharp fa-solid fa-gear fa-xl navbar-brand ms-2" data-bs-toggle="dropdown" style="color: #dedede;"></i> <!-- Icone configuracoes -->
           <ul class="dropdown-menu">
+            {% if perms.PI_WEB.add_ferramenta %}<li><a class="dropdown-item" href="{% url 'cadastrar_ferramenta-page'%}">Cadastrar Ferramenta <i class="fa-solid fa-pencil fa-lg" style="color: #bac0c9;"></i></a></li>{% endif %}
             <li><a class="dropdown-item" href="{% url 'logout-page'%}">Sair <i class="fa-solid fa-right-from-bracket fa-lg" style="color: #bac0c9;"></i></a></li>
           </ul>
         </div>

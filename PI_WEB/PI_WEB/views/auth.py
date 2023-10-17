@@ -29,6 +29,7 @@ def cadastro(request: HttpRequest):
         dados = frm.cleaned_data
         user = User.objects.create_user(username=dados['ra'], password=dados['password'])
         frm.instance.user = user
+        print(frm.data)
         frm.save()
         auth.login(request, user)
         return redirect("home-page")

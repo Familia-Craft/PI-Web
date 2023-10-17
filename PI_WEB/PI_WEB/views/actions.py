@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpRequest
 from PI_WEB.models import Ferramenta
 from PI_WEB.forms import FerramentaForm
@@ -11,7 +11,7 @@ def ferramenta(request: HttpRequest, id: int):
     context = {'ferramenta': f}
     return render(request, 'ferramenta.html', context)
 
-@login_required
+@permission_required("PI_WEB.add_ferramenta")
 def cadastrar_ferramenta(request: HttpRequest):
     frm = FerramentaForm(request.POST or None)
     if frm.is_valid():
