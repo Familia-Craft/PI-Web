@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Ferramenta(models.Model):
+    tipos = (("Perigoso", "Perigoso"), ("Seguro", "Seguro"))
     nome = models.CharField(max_length=40)
     descricao = models.TextField()
-    tipo = models.CharField(max_length=10)
-    imagem = models.ImageField(upload_to='imagens_ferramentas', default='default.png')
+    tipo = models.CharField(max_length=10, choices=tipos)
+    imagem = models.ImageField(upload_to='ferramentas', default='default.png')
 
 class Usuario(models.Model):
     ra = models.CharField(max_length=15, primary_key=True)

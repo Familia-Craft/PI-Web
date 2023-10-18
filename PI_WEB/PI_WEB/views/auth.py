@@ -3,7 +3,6 @@ from PI_WEB.forms import LoginForm, ServidorForm
 from django.http import HttpRequest
 from django.contrib import auth
 from django.contrib.auth.models import User
-from PI_WEB.models import Servidor
 
 
 def login(request: HttpRequest):
@@ -15,7 +14,6 @@ def login(request: HttpRequest):
         auth.login(request, frm.get_user())
         return redirect(request.GET.get('next', 'home-page'))
 
-    print(frm.errors)
     context = {'form': frm}
     return render(request, "login.html", context)
 
@@ -29,7 +27,6 @@ def cadastro(request: HttpRequest):
         dados = frm.cleaned_data
         user = User.objects.create_user(username=dados['ra'], password=dados['password'])
         frm.instance.user = user
-        print(frm.data)
         frm.save()
         auth.login(request, user)
         return redirect("home-page")

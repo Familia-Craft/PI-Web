@@ -13,10 +13,10 @@ def ferramenta(request: HttpRequest, id: int):
 
 @permission_required("PI_WEB.add_ferramenta")
 def cadastrar_ferramenta(request: HttpRequest):
-    frm = FerramentaForm(request.POST or None)
+    frm = FerramentaForm(request.POST or None, request.FILES)
     if frm.is_valid():
-        frm.save()
-        return redirect('home-page')
+        f = frm.save()
+        return redirect('ferramenta-page', id=f.id)
 
     context = {'form': frm}
     return render(request, 'cadastrar_ferramenta.html', context)

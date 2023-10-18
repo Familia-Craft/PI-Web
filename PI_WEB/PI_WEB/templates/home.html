@@ -39,4 +39,14 @@
     </div>
   </div>
 
+  {% for f in ferramentas %}
+      <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
+        <img class='card card-img-top' src="{{ f.imagem.url }}">
+        <div class="card-body">
+          <p class="card-text">{{ f.nome }} </p>
+        </div>
+      </div>
+    </div>
+  
+  {% endfor %}
 {% endblock %}
