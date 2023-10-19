@@ -1,52 +1,25 @@
 {% extends 'index.html' %}
 
 {% block content %}
+  <div class="container mt-5 pt-3">
+    {% for f in ferramentas %}
+      <div class="row row-cols-4">
+        {% for fe in f %}
+        
+          <div class="col col-xs-4 col-3">
+            <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;">
+              <img class='card-img-top' src="{{ fe.imagem.url }}">
+              <div class="card-body">
+                <p class="card-title">{{ fe.nome }} </p>
+                <a href="{% url 'ferramenta-page' fe.id %}" class="btn btn-success">ver ferramenta</a>
+              </div>
+            </div>
+          </div>
 
-  <div class="container mt-5 pt-3 fs-4 fw-semibold">Seus serviços</div>
+        {% endfor %}
 
-  <!-- Cardoes de seus empréstimos -->
-  <div class="container d-flex">
-    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-      <div class="card-body">
-        <p class="card-text">Mulher tirando uma foto para exemplo</p>
+        
       </div>
-    </div>
-    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-      <div class="card-body">
-        <p class="card-text">Mulher tirando uma foto para exemplo 2</p>
-      </div>
-    </div>
+    {% endfor %}
   </div>
-
-  <div class="container mt-2 fs-4 fw-semibold">Talvez se interesse</div>
-
-  <!-- Cardoes sugestões -->
-
-  <div class="container d-flex">
-    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-      <div class="card-body">
-        <p class="card-text">Mulher tirando uma foto para exemplo 3</p>
-      </div>
-    </div>
-    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-      <img class='card card-img-top' src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80">
-      <div class="card-body">
-        <p class="card-text">Mulher tirando uma foto para exemplo 4</p>
-      </div>
-    </div>
-  </div>
-
-  {% for f in ferramentas %}
-      <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;">
-        <img class='card card-img-top' src="{{ f.imagem.url }}">
-        <div class="card-body">
-          <p class="card-text">{{ f.nome }} </p>
-        </div>
-      </div>
-    </div>
-  
-  {% endfor %}
 {% endblock %}

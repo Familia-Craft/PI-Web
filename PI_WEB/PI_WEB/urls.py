@@ -26,7 +26,8 @@ urlpatterns = [
     path('cadastrar', auth.cadastro, name='cadastro-page'),
     path('logout', auth.deslogar, name='logout-page'),
     path('ferramenta/<id>', actions.ferramenta, name='ferramenta-page'),
-    path('cadastrar_ferramenta', actions.cadastrar_ferramenta, name='cadastrar_ferramenta-page')
+    path('cadastrar_ferramenta', actions.cadastrar_ferramenta, name='cadastrar_ferramenta-page'),
+    path('fluxo', actions.fluxo, name='fluxo-page')
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

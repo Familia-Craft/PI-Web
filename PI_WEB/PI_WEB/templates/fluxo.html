@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container mt-5 pt-3">
+    <div class="row">
+        <div class="col-2">
+            <select class="form-control bg-light mb-3">
+                <option value='reservas' selected="">Reservas</option>
+                <option value='emprestimos'>Empréstimos</option>
+            </select>
+        </div>
+    </div>
+    {% for r in reservas %}
+        <div class="row">
+            <div class="col-4">
+                {{ r.data}}
+            </div>
+            <div class="col-4">
+                {{ r.servidor.nome }}
+            </div>
+            <div class="col-4">
+                {{ r.ferramenta.nome }}
+            </div>
+        </div>    
+    {% endfor %}
+</div>
+
+{% endblock %}
