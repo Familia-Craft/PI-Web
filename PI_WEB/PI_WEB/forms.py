@@ -22,6 +22,10 @@ class FerramentaForm(ModelForm):
             'descricao': forms.Textarea()
         }
 
+class FinalizarFerramenta(ModelForm):
+    class Meta:
+        pass
+
 
 
 

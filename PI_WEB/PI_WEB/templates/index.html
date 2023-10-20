@@ -59,13 +59,16 @@
         <div class="dropdown" style="{%if request.user.is_authenticated %}{{ ''}} {% else %} {{'display: none;'}} {% endif %}">
           <i class="fa-sharp fa-solid fa-gear fa-xl navbar-brand ms-2" data-bs-toggle="dropdown" style="color: #dedede;"></i> <!-- Icone configuracoes -->
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'meu_fluxo-page'%}">Meu fluxo <i class="fa-solid fa-bars-progress fa-lg" style="color: #bac0c9;"></i></a>
             {% if perms.PI_WEB.add_emprestimo %}<li><a class="dropdown-item" href="{% url 'fluxo-page'%}">Controle de fluxo <i class="fa-solid fa-bars-progress fa-lg" style="color: #bac0c9;"></i></a></li>{% endif %}
             {% if perms.PI_WEB.add_ferramenta %}<li><a class="dropdown-item" href="{% url 'cadastrar_ferramenta-page'%}">Cadastrar Ferramenta <i class="fa-solid fa-pencil fa-lg" style="color: #bac0c9;"></i></a></li>{% endif %}
+            <li><hr class="dropdown-divider"></li>
+
             <li><a class="dropdown-item" href="{% url 'logout-page'%}">Sair <i class="fa-solid fa-right-from-bracket fa-lg" style="color: #bac0c9;"></i></a></li>
           </ul>
         </div>
         <!-- Fim Botão Configurações -->
-
+        
       </div>
     </div>
   </nav>

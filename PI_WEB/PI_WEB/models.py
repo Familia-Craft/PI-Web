@@ -24,7 +24,8 @@ class Aluno(Usuario):
 class Reserva(models.Model):
     ferramenta = models.ForeignKey(Ferramenta, on_delete=models.DO_NOTHING)
     servidor = models.ForeignKey(Servidor, on_delete=models.DO_NOTHING)
-    data = models.DateTimeField(auto_now_add=True, primary_key=True)
+    data = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, default="Pendente")
 
 class Emprestimo(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='emprestimos_feitos')

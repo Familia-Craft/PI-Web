@@ -1,3 +1,4 @@
+-- SQLBook: Code
 use sistemaApice;
 drop trigger if exists DefineGrupoServidor;
 create trigger DefineGrupoServidor after insert on PI_WEB_servidor
