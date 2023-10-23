@@ -2,37 +2,43 @@
 
 {% block content %}
 
-<div class="container mt-5 pt-3 d-flex justify-content-evenly">
-    <img src="{{ ferramenta.imagem.url }}" class="img-thumbnail" style="max-height: 800px; width: auto;box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;">
-    <div class="d-flex flex-column justify-content-center">
-        <h1>{{ ferramenta.nome }}</h1>
-        <p><b>Descrição:</b> {{ ferramenta.descricao | linebreaksbr }}</p>
-        <p><b>Tipo:</b> {{ferramenta.tipo}}</p>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmar">
-            Reservar
-        </button>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="confirmar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalConfirmar" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Reserva de {{ ferramenta.nome }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-footer">
-                    <p>Você deseja mesmo efetuar a reserva?</p>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Sim</button>
-                    </form>
-                </div>
-            </div>
-            </div>
+<div class="container mt-5 pt-3 d-flex justify-content-center">
+    <div class="row row-cols-auto">
+        <div class="col">
+            <img src="{{ ferramenta.imagem.url }}" class="img-thumbnail" 
+                 style="max-height: 800px; width: auto;
+                 box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;">
         </div>
-        
+        <div class="col d-flex flex-column justify-content-center">
+            <h1>{{ ferramenta.nome }}</h1>
+            <p><b>Descrição:</b> {{ ferramenta.descricao | linebreaksbr }}</p>
+            <p><b>Tipo:</b> {{ferramenta.tipo}}</p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmar">
+                Reservar
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="confirmar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalConfirmar" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Reserva de {{ ferramenta.nome }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Você deseja mesmo efetuar a reserva?</p>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Sim</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </div>
 

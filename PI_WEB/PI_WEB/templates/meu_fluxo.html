@@ -12,7 +12,7 @@
         </h2>
         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
             <div class="accordion-body">
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped table-sm table-responsive">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -23,12 +23,15 @@
                     </thead>
                     <tbody>
                         {% for r in reservas %}
-                            <td>{{ r.data }}</td>
-                            <td>{{ r.servidor.nome }}</td>
-                            <td>{{ r.ferramenta.nome }}</td>
-                            <td>{{ r.status }}</td>
-                            
+                            <tr>
+                                <td>{{ r.data }}</td>
+                                <td>{{ r.servidor.nome }}</td>
+                                <td>{{ r.ferramenta.nome }}</td>
+                                <td>{{ r.status }}</td>
+                                
+                            </tr>
                         {% endfor %}
+
                     </tbody>
                 </table>
             </div>
@@ -43,7 +46,7 @@
         </h2>
         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
             <div class="accordion-body">
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped table-sm table-responsive">
                     <thead>
                         <tr>
                             <th>Data Retirada</th>

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('PI_WEB', '0005_groups_permissions'),
+        ('PI_WEB', '0001_initial'),
     ]
 
     operations = [
