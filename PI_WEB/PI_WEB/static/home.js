@@ -16,13 +16,15 @@ $.ajax({
             for (const f of ferramentas) {
                 data_box.innerHTML += `
                 <div class="col">
-                    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle sombra" style="width: 18rem;">
-                    <img class='card-img-top' src="${f.img_url}">
-                    <div class="card-body">
-                        <p class="card-title">${f.nome}</p>
-                        <a href="/ferramenta/${f.id}" class="btn btn-success">ver ferramenta</a>
-                    </div>
-                    </div>
+                    <a href="/ferramenta/${f.id}">
+                        <div class="card my-3 me-3 bg-body-secondary border border-success-subtle sombra" style="width: 18rem;">
+                            <img class='card-img-top' src="${f.img_url}">
+                            <div class="card-body">
+                                <p class="card-title">${f.nome}</p>
+                                
+                            </div>
+                        </div>
+                    </a>
                 </div>`
             }
 
@@ -56,14 +58,15 @@ confirm_btn.addEventListener('click', () =>{
                 for (const f of ferramentas) {
                     data_box.innerHTML += `
                     <div class="col">
-                    <div class="card my-3 me-3 bg-body-secondary border border-success-subtle sombra" style="width: 18rem;">
-                    <img class='card-img-top' src="${f.img_url}">
-                    <div class="card-body">
-                            <p class="card-title">${f.nome}</p>
-                            <a href="/ferramenta/${f.id}" class="btn btn-success">ver ferramenta</a>
+                        <a href="/ferramenta/${f.id}">
+                            <div class="card my-3 me-3 bg-body-secondary border border-success-subtle sombra" style="width: 18rem;">
+                                <img class='card-img-top' src="${f.img_url}">
+                                <div class="card-body">
+                                    <p class="card-title">${f.nome}</p>
+                                </div>
                             </div>
-                            </div>
-                            </div>`
+                        </a>
+                    </div>`
                         }
     
                     }, 500)
@@ -73,39 +76,40 @@ confirm_btn.addEventListener('click', () =>{
                 }
             });
         })
-        filtro.addEventListener('change', () =>{
-            load_box.classList.remove("not-visible")
-            data_box.innerHTML = "";
-            fd = new FormData(form);
-            
-            $.ajax({
-                type: 'POST',
-                contentType: false,
-                processData: false,
-                url:  '/get-ferramentas',
-                data: fd,
-                success: function(response){
-                    setTimeout(() =>{
-                        console.log("Deu bom.")
-                        load_box.classList.add("not-visible");
-                        let ferramentas = response.ferramentas
-                        for (const f of ferramentas) {
-                            data_box.innerHTML += `
-                            <div class="col">
+filtro.addEventListener('change', () =>{
+    load_box.classList.remove("not-visible")
+    data_box.innerHTML = "";
+    fd = new FormData(form);
+    
+    $.ajax({
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        url:  '/get-ferramentas',
+        data: fd,
+        success: function(response){
+            setTimeout(() =>{
+                console.log("Deu bom.")
+                load_box.classList.add("not-visible");
+                let ferramentas = response.ferramentas
+                for (const f of ferramentas) {
+                    data_box.innerHTML += `
+                    <div class="col">
+                        <a href="/ferramenta/${f.id}">
                             <div class="card my-3 me-3 bg-body-secondary border border-success-subtle sombra" style="width: 18rem;">
-                            <img class='card-img-top' src="${f.img_url}">
-                            <div class="card-body">
-                            <p class="card-title">${f.nome}</p>
-                            <a href="/ferramenta/${f.id}" class="btn btn-success">ver ferramenta</a>
+                                <img class='card-img-top' src="${f.img_url}">
+                                <div class="card-body">
+                                    <p class="card-title">${f.nome}</p>
+                                </div>
                             </div>
-                            </div>
-                            </div>`
-                        }
-                        
-                    }, 500)
-        },
-        error: function(error){
-            console.log(error);
-        }
-        });
-    })
+                        </a>
+                    </div>`
+                }
+                
+            }, 500)
+    },
+    error: function(error){
+        console.log(error);
+    }
+    });
+})

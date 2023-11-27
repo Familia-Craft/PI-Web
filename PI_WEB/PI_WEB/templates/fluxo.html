@@ -32,13 +32,13 @@
                                 {% if r.status == 'Pendente' %}
                                 
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#{{ r.id }}-0" data-bs-whatever="{{ e.id }}">
-                                            Finalizar empréstimo
+                                            Realizar empréstimo
                                         </button>
                                         <div class="modal fade" id="{{ r.id }}-0" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Finalizar empréstimo</h1>
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Realizar empréstimo</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <form method="POST">
@@ -46,7 +46,7 @@
                                                         <div class="modal-body">
                                                             <input name='idReserva' hidden='true' value='{{ r.id }}'>
                                                             <div class="mb-3">
-                                                            <label for="recipient-name" class="col-form-label">RA do devolvedor:</label>
+                                                            <label for="recipient-name" class="col-form-label">RA do responsável pela retirada:</label>
                                                             <input type="text" class="form-control" name="idDevolvedor">
                                                             </div>
                                                             <div class="modal-footer">
@@ -128,7 +128,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                                                <button type="submit" class="btn btn-success">Efetuar empréstimo</button>
+                                                                <button type="submit" class="btn btn-success">Finalizar empréstimo</button>
                                                             </div>
                                                     </form>
                                                     </div>

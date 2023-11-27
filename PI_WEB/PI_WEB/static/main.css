@@ -13,3 +13,18 @@
 .alert:playing {
     border-bottom: none;
 }
+
+.card {
+    transition: transform 0.1s linear;
+}
+.card:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+a {
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
