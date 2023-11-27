@@ -5,31 +5,47 @@ from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Group
 from PI_WEB.models import *
-
+import os
+from PI_WEB.settings import BASE_DIR
+from django.contrib.auth.management import create_permissions
 
 def create_groups_permissions(apps, schema):
+    print(apps.get_app_configs())
+    for app_config in apps.get_app_configs():
+        app_config.models_module = True
+        create_permissions(app_config, apps=apps, verbosity=0)
+        app_config.models_module = None
     bolsistas, created = Group.objects.get_or_create(name='Bolsistas')
     professores, created = Group.objects.get_or_create(name='Professores')
 
-    aluno = ContentType.objects.get_for_model(Aluno)
-    emprestimo = ContentType.objects.get_for_model(Emprestimo)
-    reserva = ContentType.objects.get_for_model(Reserva)
-    ferramenta = ContentType.objects.get_for_model(Ferramenta)
+    # aluno = ContentType.objects.get_for_model(Aluno)
+    # emprestimo = ContentType.objects.get_for_model(Emprestimo)
+    # reserva = ContentType.objects.get_for_model(Reserva)
+    # ferramenta = ContentType.objects.get_for_model(Ferramenta)
 
     # aluno = "aluno"
     # emprestimo = "emprestimo"
     # reserva = "reserva"
     # ferramenta = "ferramenta"
-    bolsistas.permissions.add(*Permission.objects.filter(content_type=aluno))
-    bolsistas.permissions.add(*Permission.objects.filter(content_type=emprestimo))
-    bolsistas.permissions.add(*Permission.objects.filter(content_type=reserva))
-    bolsistas.permissions.add(*Permission.objects.filter(content_type=ferramenta))
+    # bolsistas.permissions.add(*Permission.objects.filter(content_type=aluno))
+    # bolsistas.permissions.add(*Permission.objects.filter(content_type=emprestimo))
+    # bolsistas.permissions.add(*Permission.objects.filter(content_type=reserva))
+    # bolsistas.permissions.add(*Permission.objects.filter(content_type=ferramenta))
 
+    for prefix in ("add", "change", "delete", "view"):
+        for model in ("aluno", "emprestimo", "reserva", "ferramenta"):
+            codename = f"{prefix}_{model}"
+            bolsistas.permissions.add(Permission.objects.get(codename=codename))
+            print("bolsita", codename)
 
-    professores.permissions.add(*Permission.objects.filter(content_type=reserva))
-    professores.permissions.add(Permission.objects.get(codename="view_ferramenta", content_type=ferramenta))
-    professores.permissions.add(Permission.objects.get(codename="view_emprestimo", content_type=emprestimo))
-    professores.permissions.add(Permission.objects.get(codename="view_aluno", content_type=aluno))
+            if prefix == "view" or model == "reserva":
+                print("professor", codename)
+                professores.permissions.add(Permission.objects.get(codename=codename))
+
+    # professores.permissions.add(*Permission.objects.filter(content_type=reserva))
+    # professores.permissions.add(Permission.objects.get(codename="view_ferramenta", content_type=ferramenta))
+    # professores.permissions.add(Permission.objects.get(codename="view_emprestimo", content_type=emprestimo))
+    # professores.permissions.add(Permission.objects.get(codename="view_aluno", content_type=aluno))
 
     print(bolsistas.permissions.all())
     print(professores.permissions.all())
@@ -37,10 +53,12 @@ def create_groups_permissions(apps, schema):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('PI_WEB', '0001_initial'),
+        ('PI_WEB', '0003_require_all'),
+        ('auth', '0012_alter_user_first_name_max_length'),
         
     ]
 
     operations = [
-        migrations.RunPython(create_groups_permissions)
+        migrations.RunPython(create_groups_permissions),
+        migrations.RunSQL(open(os.path.join(BASE_DIR, "triggers.sql")).read())
     ]

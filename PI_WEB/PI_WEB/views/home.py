@@ -8,7 +8,7 @@ from PI_WEB.models import Ferramenta
 @login_required
 def home(request: HttpRequest):
     ferramentas = Ferramenta.objects.all()
-    
+    r = range(32)
     print(ferramentas)
-    context = {'ferramentas': ferramentas}
+    context = {'ferramentas': ferramentas, "range": r}
     return render(request, "home.html", context)

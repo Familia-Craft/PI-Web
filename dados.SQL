@@ -1,3 +1,4 @@
+-- SQLBook: Code
 --Supondo a ordem: id, nome, tipo, descricao, foto(desabilitada, nao sei o que fazer)
 
 insert into Ferramenta values ('Conjunto de ferramentas 100 pecas', 'perigoso', 'Maleta Termoplastica');
@@ -22,3 +23,7 @@ insert into Ferramenta values ('Furadeira de impacto profissional Bosch', 'pergi
 
 drop database sistemaApice;
 create database sistemaApice;
+
+use sistemaApice;
+drop table `PI_WEB_emprestimo`;
+drop table `PI_WEB_reserva`;

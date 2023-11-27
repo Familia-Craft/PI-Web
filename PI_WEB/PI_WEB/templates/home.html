@@ -1,22 +1,46 @@
 {% extends 'index.html' %}
-
+{% load static %}
 {% block content %}
   <div class="container-sm mt-5 pt-3">
-    <div class="row row-cols-auto ">
-      {% for f in ferramentas %}
-          
-        <div class="col">
-          <div class="card my-3 me-3 bg-body-secondary border border-success-subtle" style="width: 18rem;box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;">
-            <img class='card-img-top' src="{{ f.imagem.url }}">
-            <div class="card-body">
-              <p class="card-title">{{ f.nome }} </p>
-              <a href="{% url 'ferramenta-page' f.id %}" class="btn btn-success">ver ferramenta</a>
-            </div>
+    <!-- Barra de controles -->
+    <div class="d-inline-flex justify-content-between w-100">
+      <form class="d-inline-flex justify-content-between w-100" role="search">
+        {% csrf_token %}
+        <div class="w-40 border rounded-3 sombra">
+          <select class="form-select" id="filtro" name="tipo">
+            <option value="">Todos</option>
+            <option value="Seguro">Seguro</option>
+            <option value="Perigoso">Perigoso</option>
+          </select>
+
+        </div>
+        <div class="d-flex">
+          <input name="pesquisa" class="form-control me-2 sombra" type="search" placeholder="Ex: chave" aria-label="Search">
+          <button class="btn btn-success" type="button" id="confirm-btn">Pesquisar</button>
+
+        </div>
+      </form>
+    </div>
+    <!-- Fim barra de controles  -->
+    <div class="row row-cols-auto justify-content-around" id="load-box">
+      <!-- Inicio placeholders -->
+      {% for i in range %}
+        <div class="card my-3 border border-success-subtle" style="width: 18rem;">
+          <img class='card-img-top placeholder-glow' src="...">
+          <div class="card-body ">
+            <h5 class="card-title placeholder-glow">
+              <span class="placeholder col-12"></span>
+            </h5>
+            <a href="" class="btn btn-success disabled placeholder col-12"></a>
           </div>
         </div>
-
-          
       {% endfor %}
-      </div>
+      <!-- Fim placeholders-->
     </div>
+    <div class="row row-cols-auto justify-content-around" id="data-box">
+      
+    </div>
+
+  </div>
+  <script src="{% static 'home.js' %}"></script>
 {% endblock %}

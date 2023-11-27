@@ -83,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sistemaApice',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',

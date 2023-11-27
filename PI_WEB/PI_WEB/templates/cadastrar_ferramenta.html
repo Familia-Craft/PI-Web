@@ -2,13 +2,18 @@
 {% load widget_tweaks%}
 {% load static %}
 {% block content %}
-
+<style>
+    #modal_img {
+        display: block;
+        max-width: 100%;
+    }
+</style>
 <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
-    <div class="border border-success rounded-3 w-100 d-flex flex-column align-items-center">
+    <div class="border border-success rounded-3 w-100 d-flex flex-column align-items-center" id="div-form">
         <div class='rounded-pill p-3 mt-3' style="width: max-content;">
             <h1 class="text-center">Cadastro de Ferramenta</h1>
         </div>
-        <form method="POST" class="p-5 w-100" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'cadastrar_ferramenta-page' %}" enctype="multipart/form-data" class="p-5 w-100" id="main_form">
             {% csrf_token %} 
             <div class="mt-4 form-group">
 
@@ -57,18 +62,40 @@
                     </div>
                 </div>
             </div>
-            <div id="image-box">
-                <img src="" width="400px" class="image">
-            </div>
-            <div class="d-flex p-3 mt-3">
-                <button class="btn btn-success w-50" type="submit">Salvar</button>
-                <div class="w-10"></div>
-                <button class="btn btn-danger w-50" type="button" onclick="location.href = '{% url 'home-page' %}';">Voltar</button>
-            </div>
+            
         </form>
+        <div id="image-box">
+            <img src="" width="400px" class="image">
+        </div>
+
+
+        <div class="d-flex p-3 mt-3 w-100">
+            <button class="btn btn-success w-50 disabled" id="confirmBtn">Salvar</button>
+            <div class="w-10"></div>
+            <button class="btn btn-danger w-50" type="button" onclick="location.href = '{% url 'home-page' %}';">Voltar</button>
+        </div>
+
+        <div class="modal modal-xl fade" id="modal_crop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal_crop_label">Modal title</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container-lg">
+
+                        <img src="" alt="" id="modal_img">                            
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="botao-crop">Cortar imagem!</button>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script src="{% static 'cadastrar_ferramenta.js'%}" defer ></script>
+<script src="{% static 'cadastrar_ferramenta.js'%}" defer></script>
 
 {% endblock %}

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from PI_WEB.views import home, auth, actions
+from PI_WEB.views import home, auth, actions, datas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +29,8 @@ urlpatterns = [
     path('cadastrar_ferramenta', actions.cadastrar_ferramenta, name='cadastrar_ferramenta-page'),
     path('fluxo', actions.fluxo, name='fluxo-page'),
     path('validar_emprestimo/<id>/<ra>', actions.validar_emprestimo, name="validar_emprestimo-page"),
-    path('meu_fluxo', actions.meu_fluxo, name="meu_fluxo-page")
+    path('meu_fluxo', actions.meu_fluxo, name="meu_fluxo-page"),
+    path('get-ferramentas', datas.data_ferramenta, name="get-ferramentas")
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
