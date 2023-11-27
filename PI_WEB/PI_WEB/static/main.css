@@ -5,3 +5,11 @@
 .not-visible {
     display: none;
 }
+
+.alert {
+    border-bottom: 2px #000;
+    transition: border-bottom 2.0s linear;
+}
+.alert:playing {
+    border-bottom: none;
+}

@@ -34,6 +34,7 @@ def cadastrar_ferramenta(request: HttpRequest):
     frm = FerramentaForm(request.POST or None, request.FILES or None)
     if frm.is_valid():
         f = frm.save()
+        return JsonResponse({"Erro": "Não", "id": f.id})
 
     context = {'form': frm}
     return render(request, 'cadastrar_ferramenta.html', context)

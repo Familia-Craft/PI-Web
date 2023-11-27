@@ -53,28 +53,28 @@ input.addEventListener("change", function(){
         fd.append("descricao", fd_antigo.get("descricao"));
         fd.append("tipo", fd_antigo.get("tipo"));
         fd.append("imagem", file, 'imagem-cortada.png');
-        console.log(file);
+        console.log("oi", form.action);
       
         $.ajax({
           type: 'POST',
-          url: "",
+          url: form.action,
           enctype: 'multipart/form-data',
           data: fd,
           success: function(response){
             console.log(response);
             container.innerHTML = `
-            <div class="alert alert-success d-flex align-items-center show fade w-100" role="alert" id="myAlert">
+            <div class="alert alert-success d-flex align-items-center show fade w-100 fixed alert-ending alerta" role="alert" id="myAlert">
               <div>
-                An example success alert with an icon
+                Ferramenta cadastrada com sucesso.
               </div>
             </div>
-          ` + container.innerHTML;
-          const alert = bootstrap.Alert.getOrCreateInstance('#myAlert');;
-            console.log("DEU CERTO!")
+            ` + container.innerHTML;
+            const alert = bootstrap.Alert.getOrCreateInstance('#myAlert');
+            
             setTimeout(()=>{
               alert.close();
-              /*location.href = "/ferramenta/" + response.id;*/
-            }, 2000)
+              location.href = "/ferramenta/" + response.id;
+              }, 2000)
           },
           error: function(error){
             container.innerHTML = `
